@@ -44,8 +44,9 @@ class Nav(object):
         app.add_template_global(self.elems, 'nav')
 
         # register some renderers that ship with flask-nav
-        register_renderer(app, 'simple', SimpleRenderer)
-        register_renderer(app, None, SimpleRenderer, force=False)
+        simple = (__name__ + '.renderers', 'SimpleRenderer')
+        register_renderer(app, 'simple', simple)
+        register_renderer(app, None, simple, force=False)
 
     def register_element(self, id, elem):
         self.elems[id] = elem
