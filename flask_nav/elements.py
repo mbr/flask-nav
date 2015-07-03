@@ -1,11 +1,14 @@
-from flask import url_for, request
+from flask import url_for, request, current_app
+from markupsafe import Markup
 
-from . import Nav
+from . import get_renderer
 
 
 class NavigationItem(object):
     def render(self, renderer=None, **kwargs):
-        return Nav.renderers[renderer](**kwargs).visit(self)
+        return Markup(
+            get_renderer(current_app, renderer)(**kwargs).visit(self)
+        )
 
 
 class LinkItem(NavigationItem):
