@@ -12,5 +12,5 @@ class BaseRenderer(Visitor):
         return ''
 
 
-class SimpleRenderer(Visitor):
+class SimpleRenderer(BaseRenderer):
     pass
