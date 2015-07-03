@@ -20,7 +20,7 @@ setup(
     url='http://github.com/mbr/flask-nav',
     license='MIT',
     packages=find_packages(exclude=['tests']),
-    install_requires=['flask'],
+    install_requires=['flask', 'visitor'],
     classifiers=[
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
