@@ -19,7 +19,7 @@ setup(
     author_email='git@marcbrinkmann.de',
     url='http://github.com/mbr/flask-nav',
     license='MIT',
-    packages=find_packages(exclude=['tests']),
+    packages=find_packages(exclude=['tests', 'example']),
     install_requires=['flask', 'visitor'],
     classifiers=[
         'Programming Language :: Python :: 2',
