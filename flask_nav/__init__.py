@@ -1,8 +1,13 @@
 from .renderers import SimpleRenderer
 
 
-def register_renderer(app, id, renderer):
-    app.extensions.setdefault('nav_renderers', {})[id] = renderer
+def register_renderer(app, id, renderer, force=True):
+    renderers = app.extensions.setdefault('nav_renderers', {})
+
+    if force:
+        renderers[id] = renderer
+    else:
+        renderers.setdefault(id, renderer)
 
 
 def get_renderer(app, id):
@@ -28,6 +33,7 @@ class Nav(object):
 
         # register some renderers that ship with flask-nav
         register_renderer(app, 'simple', SimpleRenderer)
+        register_renderer(app, None, SimpleRenderer, force=False)
 
     def register_element(self, id, elem):
         self.elems[id] = elem
