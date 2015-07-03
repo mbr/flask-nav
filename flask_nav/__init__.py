@@ -1,4 +1,4 @@
-from .renderers import SimpleRenderer
+from importlib import import_module
 
 
 def register_renderer(app, id, renderer, force=True):
@@ -11,7 +11,19 @@ def register_renderer(app, id, renderer, force=True):
 
 
 def get_renderer(app, id):
-    return app.extensions.get('nav_renderers', {})[id]
+    renderer = app.extensions.get('nav_renderers', {})[id]
+
+    if isinstance(renderer, tuple):
+        mod_name, cls_name = renderer
+        mod = import_module(mod_name)
+
+        cls = mod
+        for name in cls_name.split('.'):
+            cls = getattr(cls, name)
+
+        return cls
+
+    return renderer
 
 
 class Nav(object):
