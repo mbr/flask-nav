@@ -26,7 +26,13 @@ class SimpleRenderer(BaseRenderer):
         return cont
 
     def visit_View(self, node):
-        return tags.a(node.title, href=node.get_url(), title=node.title)
+        kwargs = {}
+        if node.active:
+            kwargs['_class'] = 'active'
+        return tags.a(node.title,
+                      href=node.get_url(),
+                      title=node.title,
+                      **kwargs)
 
     def visit_Subgroup(self, node):
         group = tags.ul()
