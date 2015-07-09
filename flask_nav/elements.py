@@ -33,7 +33,8 @@ class View(NavigationItem):
 
     @property
     def active(self):
-        # this is a better check because it takes arguments into account
+        # this is a better check than checking for request.endpoint
+        # because it takes arguments to the view into account
         return request.path == self.get_url()
 
 
