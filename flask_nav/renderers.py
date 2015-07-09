@@ -19,7 +19,7 @@ class SimpleRenderer(BaseRenderer):
         return tags.a(node.title, **node.attribs)
 
     def visit_Navbar(self, node):
-        cont = tags.nav(_class='navbar', id=node.id)
+        cont = tags.nav(_class='navbar')
         ul = cont.add(tags.ul())
 
         for item in node.items:

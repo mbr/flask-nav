@@ -61,4 +61,4 @@ class Link(TagItem):
 
 
 class Navbar(Subgroup):
-    id = 'nav_no_id'
+    pass
