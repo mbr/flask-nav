@@ -1,0 +1,32 @@
+nav.navbar a {
+  text-decoration: none;
+  color: blue;
+  font-weight: normal;
+}
+
+nav.navbar a.active {
+  font-weight: bold;
+}
+
+nav.navbar > ul {
+  list-style: none;
+}
+
+nav.navbar ul li {
+  display: block;
+  width: 150px;
+  margin-right: 20px;
+  float: left;
+}
+
+nav.navbar ul > li > a:hover {
+  background-color: #eeeecc;
+}
+
+nav.navbar ul .subgroup {
+  padding-left: 0px;
+}
+
+h1 {
+  clear: both;
+}
