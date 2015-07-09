@@ -5,6 +5,8 @@ from . import get_renderer
 
 
 class NavigationItem(object):
+    active = False
+
     def render(self, renderer=None, **kwargs):
         return Markup(
             get_renderer(current_app, renderer)(**kwargs).visit(self)
