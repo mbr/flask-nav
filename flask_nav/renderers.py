@@ -20,9 +20,10 @@ class SimpleRenderer(BaseRenderer):
 
     def visit_Navbar(self, node):
         cont = tags.nav(_class='navbar')
+        ul = cont.add(tags.ul())
 
         for item in node.items:
-            cont.add(tags.li(self.visit(item)))
+            ul.add(tags.li(self.visit(item)))
 
         return cont
 
@@ -41,7 +42,7 @@ class SimpleRenderer(BaseRenderer):
         for item in node.items:
             group.add(tags.li(self.visit(item)))
 
-        return group
+        return tags.div(node.title, group)
 
     def visit_Separator(self, node):
         return tags.span(_class='separator')

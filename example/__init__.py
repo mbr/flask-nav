@@ -31,7 +31,7 @@ def create_app(configfile=None):
 
     @app.route('/products/<product>/')
     def products(product):
-        return 'Buy our {}'.format(product)
+        return render_template('index.html', msg='Buy our {}'.format(product))
 
     @app.route('/about-us/')
     def about():
