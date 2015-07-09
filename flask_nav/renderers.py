@@ -38,11 +38,15 @@ class SimpleRenderer(BaseRenderer):
 
     def visit_Subgroup(self, node):
         group = tags.ul(_class='subgroup')
+        title = tags.span(node.title)
+
+        if node.active:
+            title.attributes['class'] = 'active'
 
         for item in node.items:
             group.add(tags.li(self.visit(item)))
 
-        return tags.div(node.title, group)
+        return tags.div(title, group)
 
     def visit_Separator(self, node):
         return tags.hr(_class='separator')

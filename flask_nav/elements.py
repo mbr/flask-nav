@@ -46,6 +46,10 @@ class Subgroup(NavigationItem):
         self.title = title
         self.items = items
 
+    @property
+    def active(self):
+        return any(item.active for item in self.items)
+
 
 class Label(TagItem):
     pass
