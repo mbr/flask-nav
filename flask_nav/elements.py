@@ -11,6 +11,12 @@ class NavigationItem(object):
         )
 
 
+class TagItem(NavigationItem):
+    def __init__(self, title, **attribs):
+        self.title = title
+        self.attribs = attribs
+
+
 class View(NavigationItem):
     def __init__(self, title, endpoint, *args, **kwargs):
         self.title = title
@@ -29,21 +35,6 @@ class View(NavigationItem):
         return request.path == self.get_url()
 
 
-class TagItem(NavigationItem):
-    def __init__(self, title, **attribs):
-        self.title = title
-        self.attribs = attribs
-
-
-class Label(NavigationItem):
-    def __init__(self, title):
-        self.title = title
-
-
-class Link(TagItem):
-    pass
-
-
 class Separator(NavigationItem):
     pass
 
@@ -52,6 +43,14 @@ class Subgroup(NavigationItem):
     def __init__(self, title, *items):
         self.title = title
         self.items = items
+
+
+class Label(TagItem):
+    pass
+
+
+class Link(TagItem):
+    pass
 
 
 class Navbar(Subgroup):
