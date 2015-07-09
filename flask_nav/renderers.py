@@ -16,7 +16,7 @@ class BaseRenderer(Visitor):
 
 class SimpleRenderer(BaseRenderer):
     def visit_Link(self, node):
-        return tags.a(node.title, title=node.title, **node.attribs)
+        return tags.a(node.title, **node.attribs)
 
     def visit_Navbar(self, node):
         cont = tags.nav(_class='navbar')
