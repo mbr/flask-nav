@@ -15,11 +15,17 @@ class BaseRenderer(Visitor):
 
 
 class SimpleRenderer(BaseRenderer):
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
+
     def visit_Link(self, node):
         return tags.a(node.title, **node.attribs)
 
     def visit_Navbar(self, node):
-        cont = tags.nav(_class='navbar')
+        kwargs = {'_class': 'navbar'}
+        kwargs.update(self.kwargs)
+
+        cont = tags.nav(**kwargs)
         ul = cont.add(tags.ul())
 
         for item in node.items:
