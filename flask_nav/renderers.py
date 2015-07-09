@@ -37,7 +37,7 @@ class SimpleRenderer(BaseRenderer):
                       **kwargs)
 
     def visit_Subgroup(self, node):
-        group = tags.ul()
+        group = tags.ul(_class='subgroup')
 
         for item in node.items:
             group.add(tags.li(self.visit(item)))
@@ -45,7 +45,7 @@ class SimpleRenderer(BaseRenderer):
         return tags.div(node.title, group)
 
     def visit_Separator(self, node):
-        return tags.span(_class='separator')
+        return tags.hr(_class='separator')
 
     def visit_Label(self, node):
         return tags.span(node.title, _class='nav-label')
