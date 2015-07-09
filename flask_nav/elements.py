@@ -11,14 +11,7 @@ class NavigationItem(object):
         )
 
 
-class LinkItem(NavigationItem):
-    title = ''
-
-    def get_url(self):
-        pass
-
-
-class View(LinkItem):
+class View(NavigationItem):
     def __init__(self, title, endpoint, *args, **kwargs):
         self.title = title
         self.endpoint = endpoint
