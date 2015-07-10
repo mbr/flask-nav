@@ -2,6 +2,15 @@ from importlib import import_module
 
 
 def register_renderer(app, id, renderer, force=True):
+    """Registers a renderer on the application.
+
+    :param app: The :class:`~flask.Flask` application to register the renderer
+                on
+    :param id: Internal id-string for the renderer
+    :param renderer: Renderer to register
+    :param force: Whether or not to overwrite the renderer if a different one
+                  is already registered for ``id``
+    """
     renderers = app.extensions.setdefault('nav_renderers', {})
 
     if force:
@@ -11,6 +20,11 @@ def register_renderer(app, id, renderer, force=True):
 
 
 def get_renderer(app, id):
+    """Retrieve a renderer.
+
+    :param app: :class:`~flask.Flask` application to look ``id`` up on
+    :param id: Internal renderer id-string to look up
+    """
     renderer = app.extensions.get('nav_renderers', {})[id]
 
     if isinstance(renderer, tuple):
@@ -27,6 +41,10 @@ def get_renderer(app, id):
 
 
 class Nav(object):
+    """The Flask-Nav extension.
+
+    :param app: An optional :class:`~flask.Flask` app to initialize.
+    """
     renderers = {}
 
     def __init__(self, app=None):
@@ -37,6 +55,10 @@ class Nav(object):
             self.init_app(app)
 
     def init_app(self, app):
+        """Initialize an application.
+
+        :param app: A :class:`~flask.Flask` app.
+        """
         if not hasattr(app, 'extensions'):
             app.extensions = {}
 
@@ -49,12 +71,15 @@ class Nav(object):
         register_renderer(app, None, simple, force=False)
 
     def register_element(self, id, elem):
+        """Register navigational element.
+
+        Registers the given navigational element, making it available using the
+        id ``id``.
+
+        This means that inside any template, the registered element will be
+        available as ``nav.`` *id*.
+
+        :param id: Id to register element with
+        :param elem: Element to register
+        """
         self.elems[id] = elem
-
-    @classmethod
-    def renderer(cls, id):
-        def wrapper(renderer_class):
-            cls.renderers[id] = renderer_class
-            return renderer_class
-
-        return wrapper
