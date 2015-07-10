@@ -5,7 +5,22 @@ from visitor import Visitor
 
 
 class Renderer(Visitor):
+    """Base interface for navigation renderers.
+
+    Inherits from :class:`visitor.Visitor`. Visiting a node should return a
+    string or an object that converts to a string containing HTML.
+    """
+
     def visit_object(self, node):
+        """Fallback rendering for objects.
+
+        If the current application is in debug-mode
+        (:attr:`flask.current_app.debug` is ``True``), an ``<!-- HTML comment
+        -->`` will be rendered, indicating which class is missing a visitation
+        function.
+
+        Outside of debug-mode, returns an empty string.
+        """
         if current_app.debug:
             return tags.comment(
                 'no implementation in {} to render {}'.format(
@@ -15,6 +30,13 @@ class Renderer(Visitor):
 
 
 class SimpleRenderer(Renderer):
+    """A very basic HTML5 renderer.
+
+    Renders a navigational structure using ``<nav>`` and ``<ul>`` tags that
+    can be styled using modern CSS.
+
+    :param kwargs: Additional attributes to pass on to the root ``<nav>``-tag.
+    """
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
