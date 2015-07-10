@@ -14,7 +14,7 @@ class Renderer(Visitor):
         """Fallback rendering for objects.
 
         If the current application is in debug-mode
-        (:attr:`flask.current_app.debug` is ``True``), an ``<!-- HTML comment
+        (``flask.current_app.debug`` is ``True``), an ``<!-- HTML comment
         -->`` will be rendered, indicating which class is missing a visitation
         function.
 
