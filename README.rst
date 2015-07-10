@@ -3,7 +3,8 @@ Flask-Nav
 
 Flask-Nav is a `Flask <http://flask.pocoo.org>`_-Extension to ease the creation
 of navigational Elements in Applications. It provides means to Express the
-Navigational structure and offers method to render these in different ways.
+Navigational structure and different ways to render these, making it easy to
+custom tailor it for your application.
 
 A motivating example:
 
@@ -38,6 +39,6 @@ A motivating example:
 
 You can find a small, runnable example application inside the ``example``
 folder. To run it, install `Flask-Appconfig
-<https://github.com/mbr/flask-appconfig>`_ and run::
+<https://github.com/mbr/flask-appconfig>`_ and execute::
 
     $ flaskdev example
