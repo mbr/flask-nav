@@ -4,7 +4,7 @@ from dominate import tags
 from visitor import Visitor
 
 
-class BaseRenderer(Visitor):
+class Renderer(Visitor):
     def visit_object(self, node):
         if current_app.debug:
             return tags.comment(
@@ -14,7 +14,7 @@ class BaseRenderer(Visitor):
         return ''
 
 
-class SimpleRenderer(BaseRenderer):
+class SimpleRenderer(Renderer):
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
