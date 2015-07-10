@@ -18,7 +18,7 @@ class NavigationItem(object):
 
         :param renderer: An object implementing the :class:`~.Renderer`
                          interface.
-        :return: A :class:`markupsafe.Markup` string with the rendered result.
+        :return: A markupsafe string with the rendered result.
         """
         return Markup(
             get_renderer(current_app, renderer)(**kwargs).visit(self)
