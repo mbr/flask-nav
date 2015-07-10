@@ -14,6 +14,19 @@ release = '0.3.dev1'
 
 pygments_style = 'sphinx'
 html_theme = 'alabaster'
+html_theme_options = {
+    'github_user': 'mbr',
+    'github_repo': 'flask-nav',
+}
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 
 intersphinx_mapping = {
     'https://docs.python.org/': None,
