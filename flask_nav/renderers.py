@@ -7,9 +7,8 @@ from visitor import Visitor
 class Renderer(Visitor):
     """Base interface for navigation renderers.
 
-    Inherits from :class:`visitor.Visitor`. Visiting a node should return a
-    string or an object that converts to a string containing HTML.
-    """
+    Visiting a node should return a string or an object that converts to a
+    string containing HTML."""
 
     def visit_object(self, node):
         """Fallback rendering for objects.
