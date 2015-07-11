@@ -7,4 +7,5 @@ Documentation
    :maxdepth: 2
 
    getting-started
+   advanced-topics
    api
