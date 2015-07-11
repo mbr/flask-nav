@@ -106,6 +106,10 @@ class Nav(object):
         This means that inside any template, the registered element will be
         available as ``nav.`` *id*.
 
+        If ``elem`` is callable, any attempt to retrieve it inside the template
+        will instead result in ``elem`` being called and the result being
+        returned.
+
         :param id: Id to register element with
         :param elem: Element to register
         """
