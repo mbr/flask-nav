@@ -8,4 +8,5 @@ Documentation
 
    getting-started
    advanced-topics
+   other-software
    api
