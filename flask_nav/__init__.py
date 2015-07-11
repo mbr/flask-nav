@@ -1,3 +1,4 @@
+import collections
 from importlib import import_module
 
 
@@ -40,6 +41,32 @@ def get_renderer(app, id):
     return renderer
 
 
+class ElementRegistry(collections.MutableMapping):
+    def __init__(self):
+        self._elems = {}
+
+    def __getitem__(self, key):
+        item = self._elems[key]
+
+        if callable(item):
+            return item()
+
+        return item
+
+    def __setitem__(self, key, value):
+        self._elems[key] = value
+
+    def __delitem__(self, key):
+        del self._elems[key]
+
+    def __iter__(self):
+        for key in self._elems.keys():
+            return self[key]
+
+    def __len__(self):
+        return len(self._elems)
+
+
 class Nav(object):
     """The Flask-Nav extension.
 
@@ -48,7 +75,7 @@ class Nav(object):
     renderers = {}
 
     def __init__(self, app=None):
-        self.elems = {}
+        self.elems = ElementRegistry()
         self.renderers = {}
 
         if app:
