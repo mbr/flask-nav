@@ -4,6 +4,16 @@ from flask_nav.elements import *
 
 nav = Nav()
 
+
+class UserGreeting(Text):
+    def __init__(self):
+        pass
+
+    @property
+    def text(self):
+        return 'Hello, {}'.format('bob')
+
+
 # registers the "top" menubar
 nav.register_element('top', Navbar(
     View('Widgits, Inc.', 'index'),
@@ -13,10 +23,11 @@ nav.register_element('top', Navbar(
         View('Wg240-Series', 'products', product='wg240'),
         View('Wg250-Series', 'products', product='wg250'),
         Separator(),
-        Label('Discontinued Products'),
+        Text('Discontinued Products'),
         View('Wg10X', 'products', product='wg10x'),
     ),
-    Link('Tech Support', href='http://techsupport.invalid/widgits_inc'),
+    Link('Tech Support', 'http://techsupport.invalid/widgits_inc'),
+    UserGreeting(),
 ))
 
 

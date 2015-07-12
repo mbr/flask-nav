@@ -40,7 +40,7 @@ class SimpleRenderer(Renderer):
         self.kwargs = kwargs
 
     def visit_Link(self, node):
-        return tags.a(node.title, **node.attribs)
+        return tags.a(node.text, href=node.get_url())
 
     def visit_Navbar(self, node):
         kwargs = {'_class': 'navbar'}
@@ -58,9 +58,9 @@ class SimpleRenderer(Renderer):
         kwargs = {}
         if node.active:
             kwargs['_class'] = 'active'
-        return tags.a(node.title,
+        return tags.a(node.text,
                       href=node.get_url(),
-                      title=node.title,
+                      title=node.text,
                       **kwargs)
 
     def visit_Subgroup(self, node):
@@ -78,5 +78,5 @@ class SimpleRenderer(Renderer):
     def visit_Separator(self, node):
         return tags.hr(_class='separator')
 
-    def visit_Label(self, node):
-        return tags.span(node.title, _class='nav-label')
+    def visit_Text(self, node):
+        return tags.span(node.text, _class='nav-label')

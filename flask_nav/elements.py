@@ -25,30 +25,40 @@ class NavigationItem(object):
         )
 
 
-class TagItem(NavigationItem):
+class Link(NavigationItem):
+    """An item that contains a link to a destination and a title."""
+    def __init__(self, text, dest):
+        self.text = text
+        self.dest = dest
+
+    def get_url(self):
+        return self.dest
+
+
+class RawTag(NavigationItem):
     """An item usually expressed by a single HTML tag.
 
     :param title: The text inside the tag.
     :param attribs: Attributes on the item.
     """
-    def __init__(self, title, **attribs):
-        self.title = title
+    def __init__(self, content, **attribs):
+        self.content = content
         self.attribs = attribs
 
 
-class View(NavigationItem):
+class View(Link):
     """Application-internal link.
 
     The ``endpoint``, ``*args`` and ``**kwargs`` are passed on to
     :func:`~flask.url_for` to get the link.
 
-    :param title: The text for the link.
+    :param text: The text for the link.
     :param endpoint: The name of the view.
     :param args: Extra arguments for :func:`~flask.url_for`
     :param kwargs: Extra keyword arguments for :func:`~flask.url_for`
     """
-    def __init__(self, title, endpoint, *args, **kwargs):
-        self.title = title
+    def __init__(self, text, endpoint, *args, **kwargs):
+        self.text = text
         self.endpoint = endpoint
         self.url_for_args = args
         self.url_for_kwargs = kwargs
@@ -97,22 +107,15 @@ class Subgroup(NavigationItem):
         return any(item.active for item in self.items)
 
 
-class Label(TagItem):
+class Text(NavigationItem):
     """Label text.
 
     Not a ``<label>`` text, but a text label nonetheless. Precise
     representation is up to the renderer, but most likely something like
     ``<span>``, ``<div>`` or similar.
     """
-    pass
-
-
-class Link(TagItem):
-    """An external link.
-
-    Note that the link target must be passed in as a ``href`` keyword argument.
-    """
-    pass
+    def __init__(self, text):
+        self.text = text
 
 
 class Navbar(Subgroup):

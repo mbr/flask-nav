@@ -89,18 +89,18 @@ authentication framework returns the current user):
 
 .. code-block:: python
 
-    class UserGreeting(Label):
+    class UserGreeting(Text):
         def __init__(self):
             pass
 
         @property
-        def title(self):
+        def text(self):
             return 'Hello, {}'.format('bob')
 
 
 Note that when subclassing :class:`.NavigationItem`, renderers will most likely
-not have a default rendering method. By subclassing :class:`.Label` in the
-example, existing methods on renderers for the label class can be used, as
+not have a default rendering method. By subclassing :class:`.Text` in the
+example, existing methods on renderers for the text class can be used, as
 visitors will go up the full inheritance chain when a visitor for the current
 class cannot be found.
 
