@@ -21,6 +21,10 @@ patches for Flask-Navigation_) [1]_, here are some key differences:
 * Some technical choices were deemed a little strange and have been avoided
   (`BoundTypeProperty <https://flask-navigation.readthedocs.org/en/latest/
    #flask.ext.navigation.utils.BoundTypeProperty>`).
+* While Flask-Navigation_ uses signals and hooks to regenerate navigation bars
+  on every request, Flask-Nav achievies dynamic behaviour by lazily
+  instantiating naviigation bars when they are needed and at the last
+  possible moment.
 
 
 .. _Flask-Navigation: https://flask-navigation.readthedocs.org/en/latest/

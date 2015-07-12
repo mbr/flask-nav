@@ -105,6 +105,20 @@ visitors will go up the full inheritance chain when a visitor for the current
 class cannot be found.
 
 
+Dynamic construction
+--------------------
+
+In the `Custom elements` section, a bit of dynamic behavior is already seen:
+The greeting changes depending on who's logged in. This does not alter the
+structure of the bar though, there is always a ``UserGreeting`` object inside
+the structure.
+
+If you want to
+
+
+This mechanism can also be used to lazily instantiate navbars, if they are
+expensive to setup but rarely used. It is also possible to preinstantiate
+non-dynamic parts and just compose these with dynimac instances.
 
 .. _visitor: https://en.wikipedia.org/wiki/Visitor_pattern
 .. _dominate: https://github.com/Knio/dominate/
