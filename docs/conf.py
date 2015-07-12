@@ -9,8 +9,8 @@ exclude_patterns = ['_build']
 project = u'Flask-Nav'
 copyright = u'2015, Marc Brinkmann'
 author = u'Marc Brinkmann'
-version = '0.3'
-release = '0.3.dev1'
+version = '0.4'
+release = '0.4.dev1'
 
 pygments_style = 'sphinx'
 html_theme = 'alabaster'
