@@ -6,7 +6,7 @@ Renderers
 
 Elements from the :mod:`flask_nav.elements` module do not have any methods for
 conversion to HTML code; this functionality is placed in
-:class:`~flask.renderers.Renderer` classes. These implement the visitor_
+:class:`.Renderer` classes. These implement the visitor_
 pattern and allow specifying a multitude of ways of converting your
 navigational structure into HTML.
 

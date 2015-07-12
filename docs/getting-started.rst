@@ -25,7 +25,7 @@ Registering the bar
 -------------------
 
 It is possible to just pass in a navigational element as a normal parameter to
-:class:`~flask.render_template`. Usually it does make sense to register it
+:func:`~flask.render_template`. Usually it does make sense to register it
 on our extension instance using :meth:`.register_element`:
 
 .. code-block:: python
