@@ -82,7 +82,9 @@ Custom elements
 ~~~~~~~~~~~~~~~
 
 Sometimes you may need to implement your own Element classes. This is easily
-done by subclassing either :class:`.NavigationItem` or a more concrete class:
+done by subclassing either :class:`.NavigationItem` or a more concrete class
+(``get_auth_user`` is a placeholder here for any way your favorite
+authentication framework returns the current user):
 
 
 .. code-block:: python
