@@ -100,7 +100,7 @@ class Nav(object):
     def navigation(self, id=None):
         """Function decorator for navbar registration.
 
-        Convenience function, calls :func:`.register_element` with ``id`` and
+        Convenience function, calls :meth:`.register_element` with ``id`` and
         the decorated function as ``elem``.
 
         :param id: ID to pass on. If ``None``, uses the decorated functions
