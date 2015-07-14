@@ -97,6 +97,21 @@ class Nav(object):
         register_renderer(app, 'simple', simple)
         register_renderer(app, None, simple, force=False)
 
+    def navigation(self, id=None):
+        """Function decorator for navbar registration.
+
+        Convenience function, calls :func:`.register_element` with ``id`` and
+        the decorated function as ``elem``.
+
+        :param id: ID to pass on. If ``None``, uses the decorated functions
+                   name.
+        """
+        def wrapper(f):
+            self.register_element(id or f.__name__, f)
+            return f
+
+        return wrapper
+
     def register_element(self, id, elem):
         """Register navigational element.
 
