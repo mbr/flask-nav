@@ -113,12 +113,32 @@ The greeting changes depending on who's logged in. This does not alter the
 structure of the bar though, there is always a ``UserGreeting`` object inside
 the structure.
 
-If you want to
+To create dynamic instance of navbars, simply pass a :func:`callable` object
+like a function to :meth:`.register_element`:
 
+.. code-block:: python
+
+    def top_nav():
+        return Navbar(...)
+
+    nav.register_element('top_nav', top_nav)
+
+This is a common pattern, for this reason the :meth:`.navigation`-decorator is
+available:
+
+.. code-block:: python
+
+    @nav.navigation
+    def top_nav():
+        # ...
+
+The ``top_nav()`` function will be called every time a navbar must be rendered.
+At this point, a user should have already logged, making it possible for
+example to present him with menu items only available to registered users.
 
 This mechanism can also be used to lazily instantiate navbars, if they are
 expensive to setup but rarely used. It is also possible to preinstantiate
-non-dynamic parts and just compose these with dynimac instances.
+non-dynamic parts and just compose these with dynamic instances.
 
 .. _visitor: https://en.wikipedia.org/wiki/Visitor_pattern
 .. _dominate: https://github.com/Knio/dominate/
