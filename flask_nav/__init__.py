@@ -1,5 +1,6 @@
 import collections
 from importlib import import_module
+import re
 
 
 def register_renderer(app, id, renderer, force=True):
@@ -132,3 +133,23 @@ class Nav(object):
         :param elem: Element to register
         """
         self.elems[id] = elem
+
+    def renderer(self, id=None, force=True):
+        """Class decorator for Renderers.
+
+        The decorated class will be added to the list of renderers kept by this
+        instance that will be registered on the app upon app initialization.
+
+        :param id: Id for the renderer, defaults to the class name in snake
+                   case.
+        :param force: Whether or not to overwrite existing renderers.
+        """
+
+        def _(cls):
+            name = cls.__name__
+            sn = name[0] + re.sub(r'([A-Z])', r'_\1', name[1:])
+
+            self._renderers((id or sn.lower(), cls, force))
+            return cls
+
+        return _
