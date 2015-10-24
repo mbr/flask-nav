@@ -65,6 +65,20 @@ Now we can use it inside the template:
     {{nav.top.render(renderer='just_div')}}
 
 
+If you are defining your custom renderers close to where the extension instance
+lives, instead of ``register_renderer``, the :meth:`~.Nav.renderer`-decorator
+can be used:
+
+.. code-block:: python
+
+    @nav.renderer()
+    class JustDivRenderer(Renderer):
+        pass  # ...
+
+    # upon registration, 'just_div_renderer' will be a registered
+
+
+
 Elements
 --------
 
