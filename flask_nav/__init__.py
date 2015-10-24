@@ -149,7 +149,7 @@ class Nav(object):
             name = cls.__name__
             sn = name[0] + re.sub(r'([A-Z])', r'_\1', name[1:])
 
-            self._renderers((id or sn.lower(), cls, force))
+            self._renderers.append((id or sn.lower(), cls, force))
             return cls
 
         return _
