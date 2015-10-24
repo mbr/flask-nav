@@ -75,6 +75,13 @@ class Nav(object):
     def __init__(self, app=None):
         self.elems = ElementRegistry()
 
+        # per default, register the simple renderer
+        simple = __name__ + '.renderers', 'SimpleRenderer'
+        self._renderers = [
+            ('simple', simple),
+            (None, simple, False),
+        ]
+
         if app:
             self.init_app(app)
 
@@ -89,10 +96,9 @@ class Nav(object):
         app.extensions['nav'] = self
         app.add_template_global(self.elems, 'nav')
 
-        # register some renderers that ship with flask-nav
-        simple = (__name__ + '.renderers', 'SimpleRenderer')
-        register_renderer(app, 'simple', simple)
-        register_renderer(app, None, simple, force=False)
+        # register some renderers
+        for args in self._renderers:
+            register_renderer(app, *args)
 
     def navigation(self, id=None):
         """Function decorator for navbar registration.
