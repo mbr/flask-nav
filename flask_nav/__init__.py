@@ -72,11 +72,8 @@ class Nav(object):
 
     :param app: An optional :class:`~flask.Flask` app to initialize.
     """
-    renderers = {}
-
     def __init__(self, app=None):
         self.elems = ElementRegistry()
-        self.renderers = {}
 
         if app:
             self.init_app(app)
