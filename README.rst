@@ -43,4 +43,4 @@ folder. To run it, install `Flask-Appconfig
 
     $ flaskdev example
 
-The `full documentation <http://http://pythonhosted.org/flask-nav/>`_ can be found on PyPI.
+The `full documentation <http://pythonhosted.org/flask-nav/>`_ can be found on PyPI.
