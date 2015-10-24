@@ -42,6 +42,10 @@ def get_renderer(app, id):
     return renderer
 
 
+class NavbarRenderingError(Exception):
+    pass
+
+
 class ElementRegistry(collections.MutableMapping):
     def __init__(self):
         self._elems = {}
@@ -50,7 +54,16 @@ class ElementRegistry(collections.MutableMapping):
         item = self._elems[key]
 
         if callable(item):
-            return item()
+            try:
+                return item()
+            except Exception as e:
+                # we wrap the exception, because otherwise things get
+                # confusing if __getitem__ returns a KeyError
+
+                # fixme: could use raise_from here on Py3
+                raise NavbarRenderingError(
+                    'Encountered {!r} while trying to render navbar'
+                    .format(e))
 
         return item
 
