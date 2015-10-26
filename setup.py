@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name='flask-nav',
-    version='0.5.dev1',
+    version='0.6.dev1',
     description='Easily create navigation for Flask applications.',
     long_description=read('README.rst'),
     author='Marc Brinkmann',
