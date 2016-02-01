@@ -79,6 +79,25 @@ class View(Link):
         return request.path == self.get_url()
 
 
+class ViewImg(View):
+    """View with img instead of text.
+    The ``endpoint``, ``*args`` and ``**kwargs`` are passed on to
+    :func:`~flask.url_for` to get the link.
+    :param img_src: The source of img for the link.
+    :param img_alt: The alternate text of img for the link.
+    :param endpoint: The name of the view.
+    :param args: Extra arguments for :func:`~flask.url_for`
+    :param kwargs: Extra keyword arguments for :func:`~flask.url_for`
+    """
+    def __init__(self, img_src, img_alt, endpoint, *args, **kwargs):
+        self.img_src = img_src
+        self.img_alt = img_alt
+        self.text = img_alt
+        self.endpoint = endpoint
+        self.url_for_args = args
+        self.url_for_kwargs = kwargs
+
+
 class Separator(NavigationItem):
     """Separator.
 
