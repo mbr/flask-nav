@@ -17,7 +17,8 @@ nav.register_element('top', Navbar(
         Text('Discontinued Products'),
         View('Wg10X', 'products', product='wg10x'),
     ),
-    Link('Tech Support', 'http://techsupport.invalid/widgits_inc'),
+    Link('Tech Support', 'http://techsupport.invalid/widgits_inc',
+         target='_blank'),
 ))
 
 
