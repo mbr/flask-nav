@@ -40,7 +40,7 @@ class SimpleRenderer(Renderer):
         self.kwargs = kwargs
 
     def visit_Link(self, node):
-        return tags.a(node.text, href=node.get_url())
+        return tags.a(node.text, href=node.get_url(), **node.attribs)
 
     def visit_Navbar(self, node):
         kwargs = {'_class': 'navbar'}

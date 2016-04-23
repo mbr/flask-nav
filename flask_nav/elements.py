@@ -27,9 +27,10 @@ class NavigationItem(object):
 
 class Link(NavigationItem):
     """An item that contains a link to a destination and a title."""
-    def __init__(self, text, dest):
+    def __init__(self, text, dest, **attribs):
         self.text = text
         self.dest = dest
+        self.attribs = attribs
 
     def get_url(self):
         return self.dest
