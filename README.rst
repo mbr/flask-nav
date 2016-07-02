@@ -41,6 +41,6 @@ You can find a small, runnable example application inside the ``example``
 folder. To run it, install `Flask-Appconfig
 <https://github.com/mbr/flask-appconfig>`_ and execute::
 
-    $ flaskdev example
+    $ flask --app=example dev
 
 The `full documentation <http://pythonhosted.org/flask-nav/>`_ can be found on PyPI.
