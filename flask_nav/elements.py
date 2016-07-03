@@ -98,9 +98,10 @@ class Subgroup(NavigationItem):
     :param items: Any number of :class:`.NavigationItem` instances  that
                   make up the navigation element.
     """
+
     def __init__(self, title, *items):
         self.title = title
-        self.items = items
+        self.items = list(items)
 
     @property
     def active(self):
