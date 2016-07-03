@@ -62,8 +62,7 @@ class ElementRegistry(collections.MutableMapping):
 
                 # fixme: could use raise_from here on Py3
                 raise NavbarRenderingError(
-                    'Encountered {!r} while trying to render navbar'
-                    .format(e))
+                    'Encountered {!r} while trying to render navbar'.format(e))
 
         return item
 
@@ -86,15 +85,13 @@ class Nav(object):
 
     :param app: An optional :class:`~flask.Flask` app to initialize.
     """
+
     def __init__(self, app=None):
         self.elems = ElementRegistry()
 
         # per default, register the simple renderer
         simple = __name__ + '.renderers', 'SimpleRenderer'
-        self._renderers = [
-            ('simple', simple),
-            (None, simple, False),
-        ]
+        self._renderers = [('simple', simple), (None, simple, False), ]
 
         if app:
             self.init_app(app)
@@ -123,6 +120,7 @@ class Nav(object):
         :param id: ID to pass on. If ``None``, uses the decorated functions
                    name.
         """
+
         def wrapper(f):
             self.register_element(id or f.__name__, f)
             return f

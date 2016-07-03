@@ -21,10 +21,9 @@ class Renderer(Visitor):
         Outside of debug-mode, returns an empty string.
         """
         if current_app.debug:
-            return tags.comment(
-                'no implementation in {} to render {}'.format(
-                    self.__class__.__name__, node.__class__.__name__,
-                ))
+            return tags.comment('no implementation in {} to render {}'.format(
+                self.__class__.__name__,
+                node.__class__.__name__, ))
         return ''
 
 
@@ -36,6 +35,7 @@ class SimpleRenderer(Renderer):
 
     :param kwargs: Additional attributes to pass on to the root ``<nav>``-tag.
     """
+
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
