@@ -48,6 +48,7 @@ class RawTag(NavigationItem):
 
 
 class View(Link):
+    ignore_query = True
     """Application-internal link.
 
     The ``endpoint``, ``*args`` and ``**kwargs`` are passed on to
@@ -72,9 +73,22 @@ class View(Link):
 
     @property
     def active(self):
-        # this is a better check than checking for request.endpoint
-        # because it takes arguments to the view into account
-        return request.path == self.get_url()
+        if not request.endpoint == self.endpoint:
+            return False
+
+        # rebuild the url and compare results. we can't rely on using get_url()
+        # because whether or not an external url is created depends on factors
+        # outside our control
+
+        _, url = request.url_rule.build(self.url_for_kwargs,
+                                        append_unknown=not self.ignore_query)
+
+        if self.ignore_query:
+            return url == request.path
+
+        # take query string into account.
+        # FIXME: ensure that the order of query parameters is consistent
+        return url == request.full_path
 
 
 class Separator(NavigationItem):
