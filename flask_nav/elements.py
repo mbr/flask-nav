@@ -48,6 +48,10 @@ class RawTag(NavigationItem):
 
 
 class View(Link):
+    #: Whether or not to consider query arguments (``?foo=bar&baz=1``) when
+    #: determining whether or not a ``View`` is active.
+
+    #: By default, query arguments are ignored."""
     ignore_query = True
     """Application-internal link.
 
