@@ -55,14 +55,12 @@ class View(Link):
 
     :param text: The text for the link.
     :param endpoint: The name of the view.
-    :param args: Extra arguments for :func:`~flask.url_for`
     :param kwargs: Extra keyword arguments for :func:`~flask.url_for`
     """
 
-    def __init__(self, text, endpoint, *args, **kwargs):
+    def __init__(self, text, endpoint, **kwargs):
         self.text = text
         self.endpoint = endpoint
-        self.url_for_args = args
         self.url_for_kwargs = kwargs
 
     def get_url(self):
@@ -70,8 +68,7 @@ class View(Link):
 
         :return: A string with a link.
         """
-        return url_for(self.endpoint, *self.url_for_args,
-                       **self.url_for_kwargs)
+        return url_for(self.endpoint, **self.url_for_kwargs)
 
     @property
     def active(self):
