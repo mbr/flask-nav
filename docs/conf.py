@@ -10,7 +10,7 @@ project = u'Flask-Nav'
 copyright = u'2015, Marc Brinkmann'
 author = u'Marc Brinkmann'
 version = '0.6'
-release = '0.6.dev1'
+release = '0.6'
 
 pygments_style = 'sphinx'
 html_theme = 'alabaster'
