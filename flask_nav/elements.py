@@ -48,11 +48,6 @@ class RawTag(NavigationItem):
 
 
 class View(Link):
-    #: Whether or not to consider query arguments (``?foo=bar&baz=1``) when
-    #: determining whether or not a ``View`` is active.
-
-    #: By default, query arguments are ignored."""
-    ignore_query = True
     """Application-internal link.
 
     The ``endpoint``, ``*args`` and ``**kwargs`` are passed on to
@@ -62,6 +57,12 @@ class View(Link):
     :param endpoint: The name of the view.
     :param kwargs: Extra keyword arguments for :func:`~flask.url_for`
     """
+
+    #: Whether or not to consider query arguments (``?foo=bar&baz=1``) when
+    #: determining whether or not a ``View`` is active.
+
+    #: By default, query arguments are ignored."""
+    ignore_query = True
 
     def __init__(self, text, endpoint, **kwargs):
         self.text = text
