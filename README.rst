@@ -10,7 +10,7 @@ A motivating example:
 
 .. code-block:: python
 
-    from flask import Flask, render_template
+    from flask import Flask
     from flask_nav import Nav
     from flask_nav.elements import *
 
