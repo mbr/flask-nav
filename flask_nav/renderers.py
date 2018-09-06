@@ -1,6 +1,7 @@
 from flask import current_app
 
 from dominate import tags
+from dominate.util import raw
 from visitor import Visitor
 
 
@@ -80,3 +81,6 @@ class SimpleRenderer(Renderer):
 
     def visit_Text(self, node):
         return tags.span(node.text, _class='nav-label')
+
+    def visit_RawTag(self, node):
+        return raw(node.content)
