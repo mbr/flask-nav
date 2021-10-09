@@ -1,4 +1,4 @@
-import collections
+import collections.abc
 from importlib import import_module
 import re
 
@@ -46,7 +46,7 @@ class NavbarRenderingError(Exception):
     pass
 
 
-class ElementRegistry(collections.MutableMapping):
+class ElementRegistry(collections.abc.MutableMapping):
     def __init__(self):
         self._elems = {}
 
